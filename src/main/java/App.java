@@ -15,5 +15,16 @@ public class App {
       model.put("template", "templates/index.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
+
+    post("/tasks", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+
+      String description = request.queryParams("description");
+      Task newTask = new Task(description);
+      request.session().attribute("task", newTask);
+
+      model.put("template", "templates/success.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
   }
 }
