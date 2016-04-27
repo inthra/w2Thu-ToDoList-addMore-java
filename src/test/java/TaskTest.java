@@ -4,6 +4,9 @@ import java.time.LocalDateTime;
 
 public class TaskTest {
 
+  @Rule
+  public ClearRule clearRule = new ClearRule();
+
   @Test
   public void Task_instantiatesCorrectly_true() {
     Task myTask = new Task("Mow the lawn");
@@ -45,7 +48,7 @@ public class TaskTest {
 
   @Test
   public void getId_tasksInstantiateWithAnID_1() {
-    Task.clear();
+    // Task.clear(); ClearRule takes care of clearing our Task
     Task myTask = new Task("Mow the lawn");
     assertEquals(1, myTask.getId());
   }
