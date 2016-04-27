@@ -35,4 +35,11 @@ public class TaskTest {
     assertTrue(Task.all().contains(firstTask));
     assertTrue(Task.all().contains(secondTask));
   }
+
+  @Test
+  public void clear_emptiesAllTasksFromArrayList_0() {
+    Task myTask = new Task("Mow the lawn");
+    Task.clear();
+    assertEquals(Task.all().size(), 0);
+  }
 }
